@@ -24,7 +24,7 @@
 
 import Foundation
 
-protocol SignerProtocol {
+public protocol SignerProtocol {
     var algorithm: SignatureAlgorithm { get }
 
     /// Signs input data.
@@ -70,6 +70,10 @@ public struct Signer<KeyType> {
             // swiftlint:disable:next force_cast
             self.signer = ECSigner(algorithm: signingAlgorithm, privateKey: key as! ECSigner.KeyType)
         }
+    }
+
+    public init(signer: SignerProtocol) {
+        self.signer = signer
     }
 
     internal func sign(header: JWSHeader, payload: Payload) throws -> Data {
