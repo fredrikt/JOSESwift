@@ -52,6 +52,7 @@ public enum SignatureAlgorithm: String {
     case ES384
     /// ECDSA P-521 using SHA-512
     case ES512
+    case EdDSA
 }
 
 /// Cryptographic algorithms for key management.

@@ -70,6 +70,8 @@ public struct Verifier {
                 return nil
             }
             self.verifier = ECVerifier(algorithm: verifyingAlgorithm, publicKey: key as! ECVerifier.KeyType)
+        case .EdDSA:
+            return nil
         }
     }
 
