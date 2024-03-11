@@ -32,7 +32,7 @@ public protocol SignerProtocol {
     /// - Parameter signingInput: The input to sign.
     /// - Returns: The signature.
     /// - Throws: `JWSError` if any error occurs while signing.
-    func sign(_ signingInput: Data) throws -> Data
+    func sign(_ signingInput: Data) async throws -> Data
 }
 
 public struct Signer<KeyType> {
@@ -76,7 +76,7 @@ public struct Signer<KeyType> {
         self.signer = signer
     }
 
-    internal func sign(header: JWSHeader, payload: Payload) throws -> Data {
+    internal func sign(header: JWSHeader, payload: Payload) async throws -> Data {
         guard let alg = header.algorithm, alg == signer.algorithm else {
             throw JWSError.algorithmMismatch
         }
@@ -85,7 +85,7 @@ public struct Signer<KeyType> {
             throw JWSError.cannotComputeSigningInput
         }
 
-        return try signer.sign(signingInput)
+        return try await signer.sign(signingInput)
     }
 }
 
