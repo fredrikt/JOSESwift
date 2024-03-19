@@ -272,6 +272,16 @@ extension JWEHeader: CommonHeaderParameterSpace {
             parameters["crit"] = newValue
         }
     }
+
+    /// The nonce header parameter can be used to prevent replay attacks
+    public var nonce: [String]? {
+        get {
+            return parameters["nonce"] as? [String]
+        }
+        set {
+            parameters["nonce"] = newValue
+        }
+    }
 }
 
 // MARK: - Deprecated API
