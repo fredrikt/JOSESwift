@@ -234,9 +234,9 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The nonce header parameter can be used to prevent replay attacks
-    public var nonce: [String]? {
+    public var nonce: String? {
         get {
-            return parameters["nonce"] as? [String]
+            return parameters["nonce"] as? String
         }
         set {
             parameters["nonce"] = newValue

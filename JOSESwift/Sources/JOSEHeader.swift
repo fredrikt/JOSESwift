@@ -73,5 +73,5 @@ public protocol CommonHeaderParameterSpace {
     var typ: String? { get set }
     var cty: String? { get set }
     var crit: [String]? { get set }
-    var nonce: [String]? { get set }
+    var nonce: String? { get set }
 }
