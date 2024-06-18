@@ -285,6 +285,16 @@ extension JWEHeader: CommonHeaderParameterSpace {
             parameters["nonce"] = newValue
         }
     }
+
+    /// The sequence number header parameter can be used to prevent replay attacks
+    public var seq: Int? {
+        get {
+            return parameters["seq"] as? Int
+        }
+        set {
+            parameters["seq"] = newValue
+        }
+    }
 }
 
 // MARK: - Deprecated API

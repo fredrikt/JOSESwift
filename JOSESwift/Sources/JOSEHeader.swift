@@ -102,4 +102,5 @@ public protocol CommonHeaderParameterSpace {
     var cty: String? { get set }
     var crit: [String]? { get set }
     var nonce: String? { get set }
+    var seq: Int? { get set }
 }
