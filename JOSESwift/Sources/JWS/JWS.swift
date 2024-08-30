@@ -54,12 +54,12 @@ public struct JWS {
     ///   - payload: A fully initialized `Payload`.
     ///   - signer: The `Signer` used to compute the JWS signature from the header and payload.
     /// - Throws: `JOSESwiftError` if any error occurs while signing. 
-    public init(header: JWSHeader, payload: Payload, signer: Signer) throws {
+    public init(header: JWSHeader, payload: Payload, signer: Signer) async throws {
         self.header = header
         self.payload = payload
 
         do {
-            self.signature = try signer.sign(header: header, payload: payload)
+            self.signature = try await signer.sign(header: header, payload: payload)
         } catch {
             if let ecError = error as? ECError {
                 switch ecError {
