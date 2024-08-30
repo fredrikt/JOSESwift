@@ -361,4 +361,14 @@ extension JWEHeader: CommonHeaderParameterSpace {
             parameters["p2c"] = newValue
         }
     }
+
+    /// Sequence number
+    public var seq: Int? {
+        get {
+            return parameters["seq"] as? Int
+        }
+        set {
+            parameters["seq"] = newValue
+        }
+    }
 }
