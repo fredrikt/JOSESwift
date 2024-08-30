@@ -69,6 +69,8 @@ public struct Signer {
             }
             // swiftlint:disable:next force_cast
             self.signer = ECSigner(algorithm: signatureAlgorithm, privateKey: key as! ECSigner.KeyType)
+        case .EdDSA:
+            return nil
         }
     }
 
